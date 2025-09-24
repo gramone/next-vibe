@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Classes() {
   return (
     <div className="min-h-screen">
@@ -10,12 +12,12 @@ export default function Classes() {
               </div>
             </div>
             <div className="flex items-center space-x-8">
-              <a href="/" className="text-gray-900 hover:text-gray-600 font-medium transition-colors">
+              <Link href="/" className="text-gray-900 hover:text-gray-600 font-medium transition-colors">
                 Home
-              </a>
-              <a href="/classes" className="text-gray-900 hover:text-gray-600 font-medium transition-colors">
+              </Link>
+              <Link href="/classes" className="text-gray-900 hover:text-gray-600 font-medium transition-colors">
                 Classes
-              </a>
+              </Link>
               <a href="#" className="text-gray-900 hover:text-gray-600 font-medium transition-colors">
                 About Us
               </a>
