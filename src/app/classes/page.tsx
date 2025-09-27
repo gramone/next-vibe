@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { getClasses } from '../../lib/classes';
 
-export default function Classes() {
+export default async function Classes() {
+  const classes = await getClasses();
   return (
     <div className="min-h-screen">
       <nav className="bg-white shadow-md">
@@ -37,38 +39,18 @@ export default function Classes() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Beginner Class</h3>
-              <p className="text-gray-600 mb-4">Perfect for those just starting their journey.</p>
-              <div className="text-sm text-gray-500">
-                <p>Duration: 4 weeks</p>
-                <p>Schedule: Mon, Wed, Fri</p>
+          {classes.map((classItem) => (
+            <div key={classItem.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{classItem.name}</h3>
+                <p className="text-gray-600 mb-4">{classItem.description}</p>
+                <div className="text-sm text-gray-500">
+                  <p>Duration: {classItem.duration}</p>
+                  <p>Schedule: {classItem.schedule}</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Intermediate Class</h3>
-              <p className="text-gray-600 mb-4">Take your skills to the next level.</p>
-              <div className="text-sm text-gray-500">
-                <p>Duration: 6 weeks</p>
-                <p>Schedule: Tue, Thu</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Advanced Class</h3>
-              <p className="text-gray-600 mb-4">Master advanced techniques and concepts.</p>
-              <div className="text-sm text-gray-500">
-                <p>Duration: 8 weeks</p>
-                <p>Schedule: Weekends</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </main>
     </div>
