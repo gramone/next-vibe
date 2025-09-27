@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getClasses } from '../../lib/classes';
 
+export const revalidate = 0; // Disable caching
+
 export default async function Classes() {
   const classes = await getClasses();
   return (
